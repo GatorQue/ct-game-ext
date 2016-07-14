@@ -28,6 +28,11 @@ if(NOT SFML_FOUND)
       URL_MD5 7f152bab6afc8ccbddaf51d6da318201
       INCLUDE_DIRS include)
 
+  # define SFML_STATIC if the build type is not set to 'shared'
+  if(NOT BUILD_SHARED_LIBS)
+    add_definitions(-DSFML_STATIC)
+  endif()
+
   # Define SFML_LIBRARIES with list of targets provided by cmake project
   set(SFML_LIBRARIES sfml-audio sfml-graphics sfml-network sfml-window sfml-system)
 else()
